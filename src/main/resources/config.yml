@@ -1,0 +1,6 @@
+options:
+  prefix: "&e[&6&lUHC&e]"
+messages:
+  console:
+    enable-message: "%prefix% &rLe plugin vient de se démarrer."
+    disable-message: "%prefix% &rLe plugin s'est éteint."
