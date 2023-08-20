@@ -4,3 +4,98 @@ messages:
   console:
     enable-message: "%prefix% &rLe plugin vient de se démarrer."
     disable-message: "%prefix% &rLe plugin s'est éteint."
+  host:
+    be-host-message: "%prefix% &fFélicitation ! Vous êtes devenu le hôte de cette partie, faites &c/uhc start &fpour démarrer le compte à rebours."
+    info-host-start-message: "%prefix% &aVous avez démarré le compte à rebours !"
+    not-enough-players-message: "%prefix% &cIl n'y a pas assez de joueur pour démarrer la partie (Minimum 2 joueurs sont nécessaire)."
+    no-host-permission-message: "%prefix% &cVous n'avez pas la permission de faire cela, vous n'êtes pas l'hôte de cette partie."
+  timer:
+    one-second: "seconde"
+    several-seconds: "secondes"
+    timer-message: "%prefix% &eLa partie commence dans &c%time% &e%second%."
+    end-timer-message: "%prefix% &eLa partie commence, téléportation en cours..."
+  be-spectator-message: "%prefix% &fLa partie a déjà commencé, vous êtes passez en mode spectateur."
+  join-message: "%prefix% &7[&a+&7] &7%player%"
+  quit-message: "%prefix% &7[&c-&7] &7%player%"
+
+title:
+  timer:
+    five-second-title: "&2&l5"
+    four-second-title: "&a&l4"
+    three-second-title: "&c&l3"
+    two-second-title: "&c&l2"
+    one-second-title: "&c&l1"
+    final-second-title: "&a&lGo !"
+
+spawns-coords:
+  - "-100, 100, 100, 0f, 0f"
+  - "100, 100, -100, 0f, 0f"
+  - "0, 100, 100, 0f, 0f"
+  - "0, 100, -100, 0f, 0f"
+  - "100, 100, 0, 0f, 0f"
+  - "-100, 100, 0, 0f, 0f"
+  - "100, 100, 100, 0f, 0f"
+  - "-100, 100, -100, 0f, 0f"
+
+scoreboard-waiting:
+  - "&7%date%"
+  - "&7"
+  - "&6&l%player%"
+  - "&7▪ &fParties jouées: &9%total-party%"
+  - "&7▪ &fKills: &3%total-kills%"
+  - "&7▪ &fVictoires: &c%total-victory%"
+  - "&1"
+  - "&e&lServeur"
+  - "&7▪ &fNombre de joueurs: &3%player-ingame%&7/&3%player-max%"
+  - "&7▪ &fHôte: &c%host-owner%"
+  - "&d"
+  - "&e%server-ip%"
+
+scoreboard-starting:
+  - "&7%date%"
+  - "&7"
+  - "&6&lDémarrage"
+  - "&7▪ &fDébut dans &e%time%&fs"
+  - "&7▪ &fMode: &bSolo"
+  - "&d"
+  - "&e&lServeur"
+  - "&7▪ &fJoueurs: &3%player-ingame%&7/&3%player-max%"
+  - "&7▪ &fHôte: &c%host-owner%"
+  - "&1"
+  - "&e%server-ip%"
+
+scoreboard-mining:
+  - "&7%date%"
+  - "&7"
+  - "&6&lMinage"
+  - "&7▪ &fTemps de jeu: &c%time-ingame%"
+  - "&7▪ &fBordure: &6%border%"
+  - "&7▪ &fTéléportation: &b%minute-tp%:%second-tp%"
+  - "&1"
+  - "&e&lStats"
+  - "&7▪ &fKills: &e%total-kill%"
+  - "&7▪ &fJoueurs: &6%players-left%"
+  - "&d"
+  - "&e%server-ip%"
+
+scoreboard-playing:
+  - "&7%date%"
+  - "&7"
+  - "&6&lEn jeu"
+  - "&7▪ &fTemps de jeu: &c%minute-ingame%:%second-ingame%"
+  - "&7▪ &fBordure: &6%border%"
+  - "&1"
+  - "&e&lStats"
+  - "&7▪ &fKills: &e%total-kill%"
+  - "&7▪ &fJoueurs: &6%players-left%"
+  - "&d"
+  - "&e%server-ip%"
+
+scoreboard-end:
+  - "&7%date%"
+  - "&7"
+  - "&c&lFin"
+  - "&7▪ &fGagnant: &6%winner%"
+  - "&7▪ &fTemps joué: &c%minute-ingame%:%second-ingame%"
+  - "&1"
+  - "&e%server-ip%"

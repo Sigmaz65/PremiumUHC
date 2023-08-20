@@ -6,8 +6,8 @@ import org.bukkit.ChatColor;
 
 public class TextManager {
 
-    public static String FormatString(String text){
-        return text.replace("%prefix%", Main.getInstance().getConfig().getString("options.prefix").replace("%nl%", "\n"));
+    public static String formatString(String text){
+        return text.replace("%prefix%", ConfigManager.prefix).replace("%nl%", "\n").replace("&", "§");
     }
 
 

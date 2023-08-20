@@ -3,12 +3,15 @@ package fr.infarium.premiumuhc;
 import fr.infarium.premiumuhc.commands.UHCCommand;
 import fr.infarium.premiumuhc.listeners.Listeners;
 import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.WorldBorder;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
 public final class Main extends JavaPlugin {
 
     private static Main instance;
+    public static GameState state;
 
     @Override
     public void onEnable() {
@@ -17,6 +20,7 @@ public final class Main extends JavaPlugin {
         getConfig().options().copyDefaults(true);
 
         Bukkit.getPluginManager().registerEvents(new Listeners(), this);
+        Bukkit.getPluginManager().registerEvents(new DeathListener(), this);
 
         System.out.println(getConfig().getString("messages.console.enable-message"));
 
