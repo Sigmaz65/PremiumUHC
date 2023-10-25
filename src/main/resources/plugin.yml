@@ -5,3 +5,9 @@ main: fr.infarium.premiumuhc.Main
 commands:
   uhc:
     description: UHC command
+  finish:
+    description: finish
+  enchant:
+    description: enchant
+  teams:
+    description: teams

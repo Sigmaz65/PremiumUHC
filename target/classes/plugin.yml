@@ -1,7 +1,13 @@
 name: PremiumUHC
 version: '1.0-SNAPSHOT'
 main: fr.infarium.premiumuhc.Main
-
+depend: [Multiverse-Core]
 commands:
   uhc:
     description: UHC command
+  finish:
+    description: finish
+  enchant:
+    description: enchant
+  teams:
+    description: teams

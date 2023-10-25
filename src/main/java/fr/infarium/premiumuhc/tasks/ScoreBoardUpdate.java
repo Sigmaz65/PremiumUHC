@@ -12,6 +12,6 @@ public class ScoreBoardUpdate {
             for(Player ps : Bukkit.getOnlinePlayers()) {
                 ScoreManager.setScoreboard(ps, ScoreManager.getPlayerScoreBoard(ps));
             }
-        },0L,20L);
+        },0L,10L);
     }
 }

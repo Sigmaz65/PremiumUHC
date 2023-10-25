@@ -1,6 +1,7 @@
 package fr.infarium.premiumuhc.manager;
 
 import fr.infarium.premiumuhc.Main;
+import fr.infarium.premiumuhc.mysql.HostData;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.List;
@@ -30,8 +31,27 @@ public class ConfigManager {
     public static String two_second_timer = null;
     public static String one_second_timer = null;
     public static String final_second_timer = null;
+    public static String end_game_message;
+    public static String death_message_toplayer;
+    public static String death_message_byplayer;
+    public static String death_message_alone;
+    public static String victory_title;
+    public static String stats;
+    public static String server_lobby;
+    public static String server_host;
+    public static String no_pseudo_message;
+    public static String player_not_online;
+    public static String be_kick_message;
+    public static String successfully_kick_message;
 
 
+    //config host teams
+    public static String team_limit_message;
+    public static String player_limit_per_team_message;
+    public static String min_team_message;
+    public static String min_player_per_team_message;
+
+//int
     public static Integer max_player = null;
     public static Integer minage_second = null;
     public static Integer minage_minute = null;
@@ -78,6 +98,29 @@ public class ConfigManager {
         two_second_timer = config.getString("title.timer.two-second-title");
         one_second_timer = config.getString("title.timer.one-second-title");
         final_second_timer = config.getString("title.timer.final-second-title");
+        //end
+        end_game_message = config.getString("messages.end.end-game-message");
+        //death
+        death_message_toplayer = config.getString("messages.kill.death-message-toplayer");
+        death_message_byplayer = config.getString("messages.kill.death-message-byplayer");
+        death_message_alone = config.getString("messages.kill.death-message-alone");
+        //victory title
+        victory_title = config.getString("title.victory.victory-title");
+        //stats
+        stats = config.getString("messages.stats");
+        //bungee
+        server_lobby = config.getString("options.bungeecord.server-lobby");
+        server_host = config.getString("options.bungeecord.server-host");
+        //kick
+        no_pseudo_message = config.getString("messages.host.kick.no-pseudo-message");
+        player_not_online = config.getString("messages.host.kick.player-not-online");
+        be_kick_message = config.getString("messages.host.kick.be-kick-message");
+        successfully_kick_message = config.getString("messages.host.kick.successfully-kick-message");
+        //teams host config
+        team_limit_message = config.getString("messages.config-host.teams.team-limit-message");
+        player_limit_per_team_message = config.getString("messages.config-host.teams.player-limit-per-team-message");
+        min_team_message = config.getString("messages.config-host.teams.min-team-message");
+        min_player_per_team_message = config.getString("messages.config-host.teams.min-player-per-team-message");
 
 // int
         max_player = Integer.valueOf(config.getString("options.game.max-player"));
@@ -97,5 +140,6 @@ public class ConfigManager {
         scoreboard_mining = config.getStringList("scoreboard-mining");
         scoreboard_playing = config.getStringList("scoreboard-playing");
         scoreboard_end = config.getStringList("scoreboard-end");
+
     }
 }

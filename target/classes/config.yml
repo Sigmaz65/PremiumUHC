@@ -2,6 +2,11 @@ options:
   prefix: "&e[&6&lUHC&e]"
   ip: "play.premium-uhc.com"
   scoreboard-name: "&6&lPREMIUM UHC"
+  bungeecord:
+    server-lobby: "lobby"
+    server-host: "host-1"
+  spawn:
+    coords: "0, 100, 0, 0f, 0f"
   game:
     max-player: 8
     time-mining:
@@ -14,6 +19,10 @@ options:
       size: 500
       last-size: 25
       speed-in-block: 1.0
+  config-host:
+    teams:
+      team-limit: 8
+      player-limit-per-team: 4
 
 messages:
   console:
@@ -24,14 +33,33 @@ messages:
     info-host-start-message: "%prefix% &aVous avez démarré le compte à rebours !"
     not-enough-players-message: "%prefix% &cIl n'y a pas assez de joueur pour démarrer la partie (Minimum 2 joueurs sont nécessaire)."
     no-host-permission-message: "%prefix% &cVous n'avez pas la permission de faire cela, vous n'êtes pas l'hôte de cette partie."
+    kick:
+      no-pseudo-message: "%prefix% &cVous devez entrer le pseudo d'un joueur pour l'expulser."
+      player-not-online: "%prefix% &cLe joueur n'est pas connecté ou n'existe pas."
+      be-kick-message: "%prefix% &cVous avez été expulsé du serveur par l'hôte de la partie."
+      successfully-kick-message: "%prefix% &fLe joueur &c%player% &fà bien été expulsé du serveur."
   timer:
     one-second: "seconde"
     several-seconds: "secondes"
     timer-message: "%prefix% &eLa partie commence dans &c%time% &e%second%."
     end-timer-message: "%prefix% &eLa partie commence, téléportation en cours..."
+  end:
+    end-game-message: "%prefix% &fLa partie est terminée, l'heureux &evainqueur &fest &6%winner%&f, Faites un tonnerre de &c&lGG &fà lui ! %nl%&eTéléportation au lobby dans quelques instants..."
+  kill:
+    death-message-toplayer: "%prefix% &cVous êtes mort &fpar &c%killer%&f, vous êtes passé en &cmode spectateur&f."
+    death-message-byplayer: "%prefix% &c%player% &fest mort par %killer%"
+    death-message-alone: "%prefix% &c%player% &fest mort"
+  config-host:
+    teams:
+      team-limit-message: "%prefix% &cErreur: La limite du nombre d'équipe à été atteinte (8 Équipes maximum)."
+      player-limit-per-team-message: "%prefix% &cErreur: La limite de joueur par équipe à été atteinte (4 Joueurs par équipe maximum)."
+      min-team-message: "%prefix% &cErreur: Minimum de 2 équipes dans la partie."
+      min-player-per-team-message: "%prefix% &cErreur: Minimum de 1 joueur par équipe."
   be-spectator-message: "%prefix% &fLa partie a déjà commencé, vous êtes passez en mode spectateur."
   join-message: "%prefix% &7[&a+&7] &7%player%"
   quit-message: "%prefix% &7[&c-&7] &7%player%"
+  help: "%nl%&f---------- &c&lHELP &f----------%nl%&c/uhc start &6&l✯ &fDémarrer la partie de UHC.%nl%&c/uhc options &6&l✯ &fConfigurer la partie.%nl%&c/uhc kick <joueur> &6&l✯ &fExpulser un joueur de la partie.%nl%&c/uhc stats &fAccéder à ses statistiques.%nl%&c/uhc info &fInformations sur la partie.%nl%&c/uhc scenarios &fVoir la liste des scénarios.%nl%&c/uhc inventaire &fVoir l'inventaire de départ.%nl%&c/uhc leave &fpour quitter la partie de UHC et retourner au Lobby.%nl%--------------------------%nl% "
+  stats: "%nl%&f---------- &c&lSTATS &f----------%nl% &fNombre de parties jouées: &b%total-party% %nl% &fNombre de parties gagnées: &6%total-victory% %nl% &fNombre de kills: &c%total-kills% %nl%&f----------------------------"
 
 title:
   timer:
@@ -41,6 +69,8 @@ title:
     two-second-title: "&c&l2"
     one-second-title: "&c&l1"
     final-second-title: "&a&lGo !"
+  victory:
+    victory-title: "&eVictoire !"
 
 spawns-coords:
   - "-100, 100, 100, 0f, 0f"
@@ -56,12 +86,12 @@ scoreboard-waiting:
   - "&7%date%"
   - "&7"
   - "&6&l%player%"
-  - "&7▪ &fParties jouées: &9%total-party%"
-  - "&7▪ &fKills: &3%total-kills%"
-  - "&7▪ &fVictoires: &c%total-victory%"
+  - "&7▪ &fParties jouées: &b%total-party%"
+  - "&7▪ &fKills: &c%total-kills%"
+  - "&7▪ &fVictoires: &6%total-victory%"
   - "&1"
   - "&e&lServeur"
-  - "&7▪ &fNombre de joueurs: &3%player-ingame%&7/&3%player-max%"
+  - "&7▪ &fJoueurs: &3%player-ingame%&7/&3%player-max%"
   - "&7▪ &fHôte: &c%host-owner%"
   - "&d"
   - "&e%server-ip%"
@@ -83,9 +113,8 @@ scoreboard-mining:
   - "&7%date%"
   - "&7"
   - "&6&lMinage"
-  - "&7▪ &fTemps de jeu: &c%time-ingame%"
-  - "&7▪ &fBordure: &6%border%"
-  - "&7▪ &fTéléportation: &b%minute-tp%:%second-tp%"
+  - "&7▪ &fBordure: &6%border-time%"
+  - "&7▪ &fPvP: &b%pvp-time%"
   - "&1"
   - "&e&lStats"
   - "&7▪ &fKills: &e%total-kill%"
@@ -97,8 +126,9 @@ scoreboard-playing:
   - "&7%date%"
   - "&7"
   - "&6&lEn jeu"
-  - "&7▪ &fTemps de jeu: &c%minute-ingame%:%second-ingame%"
+  - "&7▪ &fTemps: &c%minute-ingame%:%second-ingame%"
   - "&7▪ &fBordure: &6%border%"
+  - "&7▪ &fPvP: &b%pvp-time%"
   - "&1"
   - "&e&lStats"
   - "&7▪ &fKills: &e%total-kill%"

@@ -4,6 +4,7 @@ import fr.infarium.premiumuhc.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 
@@ -27,5 +28,18 @@ public class TeleportManager {
 
     public static ArrayList<Location> getSpawns(){
         return spawns;
+    }
+    public static void teleportSpawn(Player player){
+        World world = Bukkit.getWorld("world");
+
+        String[] values = Main.getInstance().getConfig().getString("options.spawn.coords").split(",");
+        double x = Double.parseDouble(values[0]);
+        double y = Double.parseDouble(values[1]);
+        double z = Double.parseDouble(values[2]);
+        float yaw = Float.parseFloat(values[3]);
+        float pitch = Float.parseFloat(values[4]);
+
+        Location loc = new Location(world, x, y, z, yaw, pitch);
+        player.teleport(loc);
     }
 }
