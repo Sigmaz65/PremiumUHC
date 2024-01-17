@@ -51,7 +51,7 @@ public final class Main extends JavaPlugin {
         instance = this;
 
         //database
-        database = new DatabaseManager("jdbc:mysql://", "sql3.minestrator.com:3306", "minesr_OVeTCWCr?useSSL=false&characterEncoding=utf8", "minesr_OVeTCWCr", "BMmsk4TlLa1z3KYd");
+        database = new DatabaseManager("jdbc:mysql://", "176.31.132.185:3306", "jombkd_infarium_db?useSSL=false&characterEncoding=utf8", "jombkd_infarium_db", "Qu_Eq4%P87!i-1cY");
         database.connexion();
         //create tables
         TablesManager.testTables();
