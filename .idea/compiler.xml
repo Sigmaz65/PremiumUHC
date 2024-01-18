@@ -10,8 +10,5 @@
         <module name="PremiumUHC" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="PremiumUHC" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

@@ -5,8 +5,6 @@ import fr.infarium.premiumuhc.enums.GameState;
 import fr.infarium.premiumuhc.manager.ItemManager;
 import fr.infarium.premiumuhc.manager.*;
 import fr.infarium.premiumuhc.mysql.HostData;
-import fr.infarium.premiumuhc.team.PlayerTeamHandler;
-import fr.infarium.premiumuhc.team.TeamList;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -45,7 +43,7 @@ public class AutoStart extends BukkitRunnable {
             Random rand = new Random();
             for (Player pls : GameManager.getPlayers()){
 
-                // ----- Random Equipes ------
+                /* // ----- Random Equipes ------
                 if (PlayerTeamHandler.getInstance().getTeamByPlayer(pls) == null){
                     int teamSize = Integer.parseInt(HostData.getInfoHostString("size_teams"));
 
@@ -61,7 +59,7 @@ public class AutoStart extends BukkitRunnable {
 
                         teamIndex++;
                     }
-                }
+                } */
 
                 // ----- Scénarios ------
                 ScenariosManager.StartGameScenarios(pls);

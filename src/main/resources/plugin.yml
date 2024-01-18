@@ -1,6 +1,7 @@
 name: PremiumUHC
 version: '${project.version}'
 main: fr.infarium.premiumuhc.Main
+softdepend: [Multiverse-Core]
 
 commands:
   uhc:

@@ -144,3 +144,10 @@ scoreboard-end:
   - "&7▪ &fTemps joué: &c%minute-ingame%:%second-ingame%"
   - "&1"
   - "&e%server-ip%"
+
+db:
+  host: "localhost"
+  port: 3306
+  user: "root"
+  password: "password"
+  database: "uhc"

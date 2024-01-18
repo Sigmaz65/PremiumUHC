@@ -1,7 +1,8 @@
 name: PremiumUHC
 version: '1.0-SNAPSHOT'
 main: fr.infarium.premiumuhc.Main
-depend: [Multiverse-Core]
+softdepend: [Multiverse-Core]
+
 commands:
   uhc:
     description: UHC command

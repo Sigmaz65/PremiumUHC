@@ -14,7 +14,6 @@ import fr.infarium.premiumuhc.mysql.ScenariosData;
 import fr.infarium.premiumuhc.mysql.TablesManager;
 import fr.infarium.premiumuhc.tasks.ScoreBoardUpdate;
 import fr.infarium.premiumuhc.tasks.TabUpdate;
-import fr.infarium.premiumuhc.team.TeamList;
 import fr.infarium.premiumuhc.team.UpdateTeams;
 import fr.kotlini.supragui.InvHandler;
 import fr.mrmicky.fastboard.FastBoard;
@@ -43,15 +42,19 @@ public final class Main extends JavaPlugin {
     public static GameState state;
     public DatabaseManager database;
     public HashMap<Player, FastBoard> scoreBoardPlayers = new HashMap<>();
-    public List<TeamList> activesTeams = new ArrayList<>();
 
 
     @Override
     public void onEnable() {
         instance = this;
 
+        //config.yml
+        saveDefaultConfig();
+        getConfig().options().copyDefaults(true);
+        ConfigManager.loadConfig(false);
+
         //database
-        database = new DatabaseManager("jdbc:mysql://", "176.31.132.185:3306", "jombkd_infarium_db?useSSL=false&characterEncoding=utf8", "jombkd_infarium_db", "Qu_Eq4%P87!i-1cY");
+        database = new DatabaseManager("jdbc:mysql://", ConfigManager.db_host + ":" + ConfigManager.db_port, ConfigManager.db_name + "?useSSL=false&characterEncoding=utf8", ConfigManager.db_user, ConfigManager.db_password);
         database.connexion();
         //create tables
         TablesManager.testTables();
@@ -60,11 +63,6 @@ public final class Main extends JavaPlugin {
         // bungee
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeListener());
-
-        //config.yml
-        saveDefaultConfig();
-        getConfig().options().copyDefaults(true);
-        ConfigManager.loadConfig(false);
 
         //data.yml
         saveDefaultDataConfig();
@@ -110,7 +108,6 @@ public final class Main extends JavaPlugin {
         // worlds and scoreboard
         TeleportManager.loadSpawn();
         ScoreBoardUpdate.start();
-        WorldManager.setWorldGameRule(Bukkit.getWorld("world"));
 
         //create world
         MultiverseCore mv = getPlugin(MultiverseCore.class);
@@ -118,6 +115,8 @@ public final class Main extends JavaPlugin {
         mv.deleteWorld("world_nether");
 
         mv.getMVWorldManager().addWorld("world", World.Environment.NORMAL, null, WorldType.NORMAL, true, null, true);
+
+        WorldManager.setWorldGameRule(Bukkit.getWorld("world"));
 
         final World world0 = getServer().getWorld("world");
         getServer().getPluginManager().registerEvents(new Listener()
@@ -139,7 +138,7 @@ public final class Main extends JavaPlugin {
 
         //wordborder
         HostData hostData = new HostData(ConfigManager.server_host);
-        Integer border_start = Integer.valueOf(HostData.getInfoHostString("border_start"));
+        Integer border_start = Integer.valueOf(hostData.getInfoHostString("border_start"));
 
         World world = Bukkit.getWorld("world");
         WorldBorder wb = world.getWorldBorder();
@@ -149,9 +148,9 @@ public final class Main extends JavaPlugin {
 
         // database set
         // HostData hostData = new HostData(ConfigManager.server_host);
-        HostData.setInfoHostString("max_player", String.valueOf(ConfigManager.max_player));
-        HostData.setInfoHostString("server_status", "§dEn attente de joueurs...");
-        HostData.setInfoHostString("player_host", "§cEn attente...");
+        hostData.setInfoHostString("max_player", String.valueOf(ConfigManager.max_player));
+        hostData.setInfoHostString("server_status", "§dEn attente de joueurs...");
+        hostData.setInfoHostString("player_host", "§cEn attente...");
         VarManager.initializeServerVar();
 
         InvHandler.register(this);

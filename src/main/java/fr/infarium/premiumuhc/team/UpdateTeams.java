@@ -6,7 +6,7 @@ import fr.infarium.premiumuhc.mysql.HostData;
 public class UpdateTeams {
 
     public static void updateTeams(){
-        Main.getInstance().activesTeams.clear();
+        /* Main.getInstance().activesTeams.clear();
 
         int num_teams = Integer.valueOf(HostData.getInfoHostString("num_teams"));
 
@@ -19,7 +19,7 @@ public class UpdateTeams {
         }
 
         TeamList.registerTeams();
-        PlayerTeamHandler.getInstance().clearTeams();
+        PlayerTeamHandler.getInstance().clearTeams(); */
     }
 
 }

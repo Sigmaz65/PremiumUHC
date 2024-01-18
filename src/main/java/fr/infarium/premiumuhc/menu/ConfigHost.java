@@ -1,10 +1,10 @@
 package fr.infarium.premiumuhc.menu;
 
-import fr.infarium.premiumuhc.manager.ConfigManager;
-import fr.infarium.premiumuhc.manager.DataManager;
-import fr.infarium.premiumuhc.manager.TextManager;
-import fr.infarium.premiumuhc.manager.VarManager;
+import fr.infarium.premiumuhc.Main;
+import fr.infarium.premiumuhc.enums.GameState;
+import fr.infarium.premiumuhc.manager.*;
 import fr.infarium.premiumuhc.mysql.HostData;
+import fr.infarium.premiumuhc.tasks.AutoStart;
 import fr.infarium.premiumuhc.team.UpdateTeams;
 import fr.infarium.premiumuhc.utils.ItemBuilder;
 import org.bukkit.Bukkit;
@@ -247,8 +247,24 @@ public class ConfigHost {
                 break;
             case 32:
                 ConfigHostAuto.open(player);
+                break;
             case 34:
                 ConfigHostSave.open(player);
+                break;
+            case 49:
+                if (GameManager.getPlayers().size() >= 2) {
+                    player.sendMessage(TextManager.formatString(ConfigManager.info_host_start_message));
+                    GameManager.setState(GameState.STARTING);
+                    for (Player pls : GameManager.getPlayers()) {
+                        ScoreManager.setScoreboard(pls, GameState.STARTING);
+                    }
+                    AutoStart start = new AutoStart();
+                    start.runTaskTimer(Main.getInstance(), 0, 20);
+                }
+                else{
+                    player.sendMessage(TextManager.formatString(ConfigManager.not_enough_players_message));
+                }
+                break;
             default:
                 break;
         }

@@ -67,6 +67,12 @@ public class ConfigManager {
     public static List<String> scoreboard_playing = null;
     public static List<String> scoreboard_end = null;
 
+    public static String db_host;
+    public static String db_user;
+    public static String db_password;
+    public static int db_port;
+    public static String db_name;
+
 
 
     public static void loadConfig(boolean isReloadTotal) {
@@ -141,5 +147,12 @@ public class ConfigManager {
         scoreboard_playing = config.getStringList("scoreboard-playing");
         scoreboard_end = config.getStringList("scoreboard-end");
 
+
+        //db
+        db_host = config.getString("db.host");
+        db_port = config.getInt("db.port");
+        db_user = config.getString("db.user");
+        db_password = config.getString("db.password");
+        db_name = config.getString("db.database");
     }
 }

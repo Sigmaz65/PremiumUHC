@@ -3,8 +3,6 @@ package fr.infarium.premiumuhc.menu;
 import fr.infarium.premiumuhc.Main;
 import fr.infarium.premiumuhc.manager.TextManager;
 import fr.infarium.premiumuhc.mysql.HostData;
-import fr.infarium.premiumuhc.team.PlayerTeamHandler;
-import fr.infarium.premiumuhc.team.TeamList;
 import fr.infarium.premiumuhc.utils.ItemBuilder;
 import fr.kotlini.supragui.bases.MultiGUI;
 import fr.kotlini.supragui.classes.Filler;
@@ -28,7 +26,7 @@ public class TeamsGUI extends MultiGUI {
 
         int teamSize = Integer.parseInt(HostData.getInfoHostString("size_teams"));
 
-        for(TeamList team : TeamList.getActivesTeams()) {
+        /* for(TeamList team : TeamList.getActivesTeams()) {
 
             List<String> lore = new ArrayList<>();
             lore.add("");
@@ -83,6 +81,6 @@ public class TeamsGUI extends MultiGUI {
                 PlayerTeamHandler.getInstance().playersTeam.containsKey(getPlayer()) ? TeamList.getColor(PlayerTeamHandler.getInstance().playersTeam.get(getPlayer()))
                         : 0
                 ).setDisplayName("§r").build(false), e -> {});
-
+        */
     }
 }
